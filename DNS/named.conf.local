@@ -1,0 +1,23 @@
+named.conf.local
+
+
+#//
+// Do any local configuration here
+//
+
+// Consider adding the 1918 zones here, if they are not used in your
+// organization
+//include "/etc/bind/zones.rfc1918";
+
+zone "l2-3.ephec-ti.be" {
+        type master;
+        file "/etc/bind/db.l2-3";
+        };
+
+
+
+
+
+Run Docker
+sudo docker run -dit -p 53:53/udp dnsexterne8
+docker exec -it relaxed_hodgkin /bin/bash
