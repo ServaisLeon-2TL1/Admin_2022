@@ -17,7 +17,9 @@ $TTL    604800
 
 ; NS records
 
-@       IN      NS ns.l2-3.ephec-ti.be.
+@       IN      NS               ns.l2-3.ephec-ti.be.
+@       IN      MX       10      mail
+@       IN      TXT              "v=spf1 a mx ip4:176.96.231.180 ~all"
 
 ; A records
 
@@ -27,4 +29,11 @@ ns IN A 176.96.231.180
 www     IN      A 176.96.231.180
 
 
-l2-3.ephec-ti.be. IN A 176.96.231.180
+mail            IN     A               176.96.231.180
+smtp            IN     CNAME           mail
+pop3            IN     CNAME           mail
+imap            IN     CNAME           mail
+
+
+
+_dmarc          IN  TXT ("v=DMARC1;p=reject;sp=reject;pct=10;adkim=s;aspf=s;")
