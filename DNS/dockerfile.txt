@@ -2,7 +2,7 @@ FROM ubuntu:16.04
 
 MAINTAINER Leon Servais <l.servais@students.ephec.be>
 
-RUN apt-get update && apt-get install -y bind9 && apt-get install -y dnsutils && named
+RUN apt-get update && apt-get install -y bind9 && apt-get install -y dnsutils net-tools -y
 
 
 
@@ -16,4 +16,4 @@ EXPOSE 53/udp 53/tcp
 
 
 
-WORKDIR /etc/bind
+CMD ["named", "-c", "/etc/bind/named.conf", "-g"]
