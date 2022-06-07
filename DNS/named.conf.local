@@ -1,6 +1,3 @@
-named.conf.local
-
-
 #//
 // Do any local configuration here
 //
@@ -18,6 +15,4 @@ zone "l2-3.ephec-ti.be" {
 
 
 
-Run Docker
-sudo docker run -dit -p 53:53/udp dnsexterne8
-docker exec -it relaxed_hodgkin /bin/bash
+
