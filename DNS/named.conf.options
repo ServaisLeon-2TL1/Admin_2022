@@ -1,7 +1,7 @@
 options {
         directory "/var/cache/bind";
         
-        // Crypting DNS
+        // Crypting DNS Records
         dnssec-policy default;
 
         auth-nxdomain no;    # conform to RFC1035
