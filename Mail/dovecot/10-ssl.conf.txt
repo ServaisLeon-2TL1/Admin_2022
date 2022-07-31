@@ -1,9 +1,7 @@
-# SSL/TLS support: yes, no, required. <doc/wiki/SSL.txt>
-ssl = no
+ssl = required
 
-#ssl_cert = </etc/dovecot/private/dovecot.pem
-#ssl_key = </etc/dovecot/private/dovecot.key
+ssl_cert = </etc/letsencrypt/live/mail.l2-3.ephec.de/fullchain.pem
+ssl_key = </etc/letsencrypt/live/mail.l2-3.ephec.de/privkey.pem
 
 
 ssl_client_ca_dir = /etc/ssl/certs
-
