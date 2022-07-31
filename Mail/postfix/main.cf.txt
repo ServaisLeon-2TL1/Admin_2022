@@ -1,22 +1,32 @@
-smtpd_banner = $myhostname ESMTP $mail_name
+smtpd_banner = $myhostname ESMTP $mail_name (EPHEC Deutschland)
 biff = no
+
 
 append_dot_mydomain = no
 
+
 readme_directory = no
+
+
 compatibility_level = 2
+
+###Enabling SMTP for authenticated users,and handing off authentication to Dovecot
 
 smtpd_sasl_type = dovecot
 smtpd_sasl_path = private/auth
+smtpd_sasl_auth_enable = yes
 
-smtp_sasl_auth_enable = yes
 
 smtpd_sasl_auth_enable = yes
 
 broken_sasl_auth_clients = yes
 
 smtpd_sasl_authenticated_header = yes
+
 virtual_transport = lmtp:unix:private/dovecot-lmtp
+
+# See /usr/share/doc/postfix/TLS_README.gz in the postfix-doc package for
+# information on enabling SSL in the smtp client.
 
 # Restrictions
 smtpd_helo_restrictions =
@@ -27,6 +37,9 @@ smtpd_helo_restrictions =
 smtpd_recipient_restrictions =
         permit_mynetworks,
         permit_sasl_authenticated,
+        reject_non_fqdn_recipient,
+        reject_unknown_recipient_domain,
+        reject_unlisted_recipient,
         reject_unauth_destination
 smtpd_sender_restrictions =
         permit_mynetworks,
@@ -38,20 +51,25 @@ smtpd_relay_restrictions =
         permit_sasl_authenticated,
         defer_unauth_destination
 
-myhostname = mail.l2-3.ephec-ti.be
-mydomain = l2-3.ephec-ti.be
+# See /usr/share/doc/postfix/TLS_README.gz in the postfix-doc package for
+# information on enabling SSL in the smtp client.
+
+myhostname = mail.l2-3.ephec.de
+mydomain = l2-3.ephec.de
 myorigin = $mydomain
 alias_maps = hash:/etc/aliases
 alias_database = hash:/etc/aliases
-mydestination = $myhostname, localhost.$mydomain, localhost.l2-3.ephec-ti.be, localhost
+mydestination = localhost, localhost.localdomain
 relayhost =
-mynetworks = 127.0.0.0/8 [::ffff:127.0.0.0]/104 [::1]/128 176.96.231.180
+mynetworks = 127.0.0.0/8 [::ffff:127.0.0.0]/104 [::1]/128
 mailbox_size_limit = 0
 recipient_delimiter = +
 inet_interfaces = all
 inet_protocols = all
 
+# Handing off local delivery to Dovecot's LMTP, and telling it where to store mail
 virtual_transport = lmtp:unix:private/dovecot-lmtp
+
 # Virtual domains, users, and aliases
 # These files contain the connection information for the MySQL lookup tables created in the MySQL in the Part 2
 virtual_mailbox_domains = mysql:/etc/postfix/virtual-domains.cf
@@ -84,3 +102,14 @@ unknown_client_reject_code = 550
 unknown_hostname_reject_code = 550
 unverified_recipient_reject_code = 550
 unverified_sender_reject_code = 550
+
+#############SSL/TLS
+
+smtpd_use_tls=yes
+smtpd_tls_auth_only = yes
+smtp_tls_security_level = may
+smtpd_tls_security_level = may
+smtpd_tls_cert_file=/etc/letsencrypt/live/mail.l2-3.ephec.de/fullchain.pem
+smtpd_tls_key_file=/etc/letsencrypt/live/mail.l2-3.ephec.de/privkey.pem
+smtpd_sasl_security_options = noanonymous, noplaintext
+smtpd_sasl_tls_security_options = noanonymous
