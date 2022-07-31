@@ -1,6 +1,6 @@
 driver = mysql
 
-connect = "host=127.0.0.1 dbname=maildb user=phpmyadmin password=5d3DW5v#vER"
+connect = "host=127.0.0.1 dbname=maildb user=mailuser password=mailPWD"
 
 default_pass_scheme = SHA512
 
