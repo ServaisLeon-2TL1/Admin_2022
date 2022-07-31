@@ -2,7 +2,7 @@
 !include_try /usr/share/dovecot/protocols.d/*.protocol
 protocols = imap pop3 lmtp
 
-listen = *, ::
+listen = *
 
 dict {
   
