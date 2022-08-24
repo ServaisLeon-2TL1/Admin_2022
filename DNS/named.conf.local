@@ -4,22 +4,3 @@ zone "l2-3.ephec.de" {
         type master;
         file "/etc/bind/db.l2-3";
         };
-
-        options {
-                directory "/var/bind";
-                
-                // Crypting DNS Records
-                
-                dnssec-policy default;
-
-                auth-nxdomain no;    # conform to RFC1035
-                listen-on-v6 { any; };
-
-                // Prevents DDOS
-                allow-recursion { none; };
-                recursion no;
-                // transfert de zone n’est pas autorisé vers le DNS secondaires (Il y a que 1 DNS en ce moment)
-
-                allow-transfer { none; };
-        
-}
