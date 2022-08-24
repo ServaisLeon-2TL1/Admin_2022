@@ -26,8 +26,8 @@ $TTL    604800
 ns IN A 51.68.172.249
 
 *       IN      A       51.68.172.249
-www     IN      A 51.68.172.249
-b2b     IN      A 51.68.172.249
+www     IN      A       51.68.172.249
+b2b     IN      A       51.68.172.249
 
 
 mail            IN     A               51.68.172.249
@@ -42,5 +42,13 @@ _dmarc          IN  TXT ("v=DMARC1;p=reject;sp=reject;pct=10;adkim=s;aspf=s;")
 
 ;PTR
 
-249.172.68.51.in-addr.arpa IN PTR mail.l2-3.ephec.de
+249.172.68.51.in-addr.arpa    IN     PTR     mail.l2-3.ephec.de
+
+
+;DNSSEC Keys
+
+$INCLUDE Kl2-3.ephec.de.+008+22306.key
+
+$INCLUDE Kl2-3.ephec.de.+008+40161.key
+
 
