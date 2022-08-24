@@ -36,6 +36,7 @@ pop3            IN     CNAME           mail
 imap            IN     CNAME           mail
 
 
+;DMARC
 
 _dmarc          IN  TXT ("v=DMARC1;p=reject;sp=reject;pct=10;adkim=s;aspf=s;")
 
@@ -48,7 +49,4 @@ _dmarc          IN  TXT ("v=DMARC1;p=reject;sp=reject;pct=10;adkim=s;aspf=s;")
 ;DNSSEC Keys
 
 $INCLUDE Kl2-3.ephec.de.+008+22306.key
-
 $INCLUDE Kl2-3.ephec.de.+008+40161.key
-
-
