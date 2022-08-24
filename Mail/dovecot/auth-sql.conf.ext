@@ -1,8 +1,10 @@
+# Shows dovecot where auth information is of users
 passdb {
   driver = sql
   args = /etc/dovecot/dovecot-sql.conf.ext
 }
 
+# Shows dovecot which user to use for mailbox
 userdb {
   driver = static
   args = uid=vmail gid=vmail home=/var/vmail/%d/%n
