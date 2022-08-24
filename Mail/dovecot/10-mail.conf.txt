@@ -1,17 +1,13 @@
+# Path for the mails of the user
 mail_location = maildir:/var/mail/%d/%n
 
-
+# Inbox folder
 namespace inbox {
-
   inbox = yes
-
-
 }
 
-
+# Needs this group to modify files in mail folder
 mail_privileged_group = mail
 
-
 protocol !indexer-worker {
-
 }
