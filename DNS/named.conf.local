@@ -1,10 +1,15 @@
+#Zone externe
+
 zone "l2-3.ephec.de" {
         type master;
         file "/etc/bind/db.l2-3";
         };
 
-
-
-
-
-
+        options {
+                directory "/var/bind";
+                
+        // transfert de zone n’est pas autorisé vers le DNS secondaires (Il y a que 1 DNS en ce moment)
+        
+        allow-transfer { none; };
+        
+}
