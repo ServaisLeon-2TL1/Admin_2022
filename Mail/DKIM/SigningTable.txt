@@ -1,0 +1,1 @@
+dkimkey._domainkey.l2-3.ephec.de        l2-3.ephec.de:dkimkey:/etc/opendkim/dkimkey.private
