@@ -1,11 +1,20 @@
 options {
+
         directory "/var/cache/bind";
-        
+
 
         auth-nxdomain no;    # conform to RFC1035
         listen-on-v6 { any; };
         
-        // Prevents DDOS
+        # Empeche le transfert de zone car on a qu'un serveur DNS
+        allow-transfer { none; };
+
+        # Empeche la recursion pour eviter les attaques DDOS
         allow-recursion { none; };
         recursion no;
+
+        # Activation de DNSSEC
+        dnssec-enable yes;
+        dnssec-validation auto;
+
 };
