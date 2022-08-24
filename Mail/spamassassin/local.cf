@@ -1,11 +1,9 @@
+# Add spam in the mail header to indicate to the user that it's spam
 rewrite_header Subject [*****SPAM*****]
 
+# Score required before a mail is considered spam
 required_score 5.0
 
+# Learns what is spam
 use_bayes 1
-
 bayes_auto_learn 1
-
-ifplugin Mail::SpamAssassin::Plugin::Shortcircuit
-
-endif # Mail::SpamAssassin::Plugin::Shortcircuit
