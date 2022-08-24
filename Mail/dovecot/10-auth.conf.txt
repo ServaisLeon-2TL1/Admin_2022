@@ -1,11 +1,8 @@
-disable_plaintext_auth = no
-
+# If "yes" user needs to connect with TLS/SSL
+disable_plaintext_auth = yes
 auth_mechanisms = plain login
 
+
+# Points dovecot to database
 !include auth-system.conf.ext
 !include auth-sql.conf.ext
-
-
-
-
-
