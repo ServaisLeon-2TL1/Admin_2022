@@ -1,7 +1,8 @@
+# Indicates that we need SSL
 ssl = required
 
+# SSL keys path
 ssl_cert = </etc/letsencrypt/live/mail.l2-3.ephec.de/fullchain.pem
 ssl_key = </etc/letsencrypt/live/mail.l2-3.ephec.de/privkey.pem
-
 
 ssl_client_ca_dir = /etc/ssl/certs
