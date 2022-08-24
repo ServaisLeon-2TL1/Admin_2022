@@ -1,10 +1,10 @@
+# DB type
 driver = mysql
 
+# How to connect to DB
 connect = "host=127.0.0.1 dbname=maildb user=mailuser password=mailPWD"
 
+# Algorithm for password encryption
 default_pass_scheme = SHA512
-
-
-
 
 password_query = SELECT email as user, password FROM virtual_Users WHERE email='%u' and status_id=1;
