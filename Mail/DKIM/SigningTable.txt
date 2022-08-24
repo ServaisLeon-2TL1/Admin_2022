@@ -1,1 +1,2 @@
+# Point to the key which is necessary for signing the domain
 dkimkey._domainkey.l2-3.ephec.de        l2-3.ephec.de:dkimkey:/etc/opendkim/dkimkey.private
